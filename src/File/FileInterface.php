@@ -12,5 +12,11 @@ namespace minisite\File;
  */
 interface FileInterface
 {
-
+    /**
+     * Open archive file.
+     *
+     * @param $file
+     * @return mixed
+     */
+    public function open($file);
 }
