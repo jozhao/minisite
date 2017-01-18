@@ -8,6 +8,7 @@ namespace Minisite\File;
 
 use \ZipArchive;
 use Minisite\Exception\RuntimeException;
+use Minisite\Exception\InvalidArgumentException;
 
 /**
  * Class FileAbstract
@@ -29,7 +30,7 @@ abstract class FileAbstract implements FileInterface
             self::setFile($file);
             self::open($file, $flags);
         } else {
-            throw new RuntimeException(FileStatus::getStatus(ZipArchive::ER_NOENT));
+            throw new InvalidArgumentException(FileStatus::getStatus(ZipArchive::ER_NOENT));
         }
     }
 
@@ -37,10 +38,10 @@ abstract class FileAbstract implements FileInterface
      * Open archive file.
      * @param $file
      */
-    public static function open($file, $flags = null)
+    public function open($file, $flags = null)
     {
         if (empty($file)) {
-            throw new RuntimeException(FileStatus::getStatus(ZipArchive::ER_NOENT));
+            throw new InvalidArgumentException(FileStatus::getStatus(ZipArchive::ER_NOENT));
         }
 
         $archive = new ZipArchive();
@@ -50,7 +51,39 @@ abstract class FileAbstract implements FileInterface
             throw new RuntimeException(FileStatus::getStatus($open));
         }
 
-        self::setArchive($open);
+        $this->setArchive($archive);
+
+        return $archive;
+    }
+
+    /**
+     * Exact files to given path.
+     */
+    public function extract($path, array $files = array())
+    {
+        if (empty($path)) {
+            throw new InvalidArgumentException('Invalid destination path');
+        }
+
+        if ($files) {
+            $this->getArchive()->extract($path, $files);
+        } else {
+            $this->getArchive()->extract($path);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove file from archive file.
+     * @param $file
+     * @return $this
+     */
+    public function remove($file)
+    {
+        $this->getArchive()->deleteName($file);
+
+        return $this;
     }
 
     /**
@@ -60,6 +93,15 @@ abstract class FileAbstract implements FileInterface
     public function lists()
     {
         $list = [];
+
+        for ($i = 0; $i < $this->_archive->numFiles; $i++) {
+            $name = $this->_archive->getNameIndex($i);
+            if ($name === false) {
+                throw new RuntimeException(FileStatus::getStatus($this->_archive->status));
+            }
+            // Add file into lists.
+            array_push($list, $name);
+        }
 
         return $list;
     }

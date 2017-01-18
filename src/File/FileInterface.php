@@ -18,5 +18,5 @@ interface FileInterface
      * @param $file
      * @return mixed
      */
-    static function open($file);
+    public function open($file);
 }

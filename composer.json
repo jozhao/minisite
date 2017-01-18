@@ -30,7 +30,7 @@
       "src/functions_include.php"
     ],
     "psr-4": {
-      "minisite\\": "src/"
+      "Minisite\\": "src/"
     }
   },
   "extra": {
