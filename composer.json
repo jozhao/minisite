@@ -1,12 +1,13 @@
 {
   "name": "xing/minisite",
+  "type": "library",
   "description": "Minisite library for Drupal",
   "keywords": [
     "minisite",
     "mini site",
     "drupal"
   ],
-  "type": "library",
+  "homepage": "http://xing.net.au",
   "license": "Apache-2.0",
   "authors": [
     {
