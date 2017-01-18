@@ -4,7 +4,7 @@
  * @file RuntimeException.php
  */
 
-namespace minisite\Exception;
+namespace Minisite\Exception;
 
 /**
  * Class RuntimeException

@@ -4,7 +4,7 @@
  * @file FileInterface.php
  */
 
-namespace minisite\File;
+namespace Minisite\File;
 
 /**
  * Interface FileInterface
@@ -18,5 +18,5 @@ interface FileInterface
      * @param $file
      * @return mixed
      */
-    public function open($file);
+    static function open($file);
 }

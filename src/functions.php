@@ -4,7 +4,7 @@
  * @file Common functions.
  */
 
-namespace minisite;
+namespace Minisite;
 
 /**
  * Project version.

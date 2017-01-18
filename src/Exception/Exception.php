@@ -4,7 +4,7 @@
  * @file Exception.php
  */
 
-namespace minisite\Exception;
+namespace Minisite\Exception;
 
 /**
  * Interface Exception

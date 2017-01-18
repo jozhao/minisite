@@ -4,7 +4,7 @@
  * @file DocumentInterface.php
  */
 
-namespace minisite\Document;
+namespace Minisite\Document;
 
 /**
  * Interface DocumentInterface

@@ -22,8 +22,8 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "symfony/dom-crawler": "^3.2",
-    "alchemy/zippy": "^0.4.5"
+    "symfony/console": "^3.2",
+    "symfony/dom-crawler": "^3.2"
   },
   "autoload": {
     "files": [

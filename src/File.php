@@ -4,7 +4,9 @@
  * @file File.php
  */
 
-namespace minisite\File;
+namespace Minisite;
+
+use Minisite\File\FileAbstract;
 
 /**
  * Class File

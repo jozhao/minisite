@@ -4,7 +4,9 @@
  * @file Document.php
  */
 
-namespace minisite\Document;
+namespace Minisite;
+
+use Minisite\Document\DocumentAbstract;
 
 /**
  * Class Document
