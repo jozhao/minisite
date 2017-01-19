@@ -100,6 +100,10 @@ class DocumentParse
                     $item->setAttribute('href', $options['absolute_path'].'/'.substr($href, 3));
                     continue;
                 }
+
+                // Default URL rewrite behaviours.
+                $relative = empty($options['relative_path']) ? '' : $options['relative_path'].'/';
+                $item->setAttribute('href', $options['absolute_path'].'/'.$relative.$href);
             }
 
             // Save the document.
@@ -116,6 +120,10 @@ class DocumentParse
                     $item->setAttribute('src', $options['absolute_path'].'/'.substr($src, 3));
                     continue;
                 }
+
+                // Default URL rewrite behaviours.
+                $relative = empty($options['relative_path']) ? '' : $options['relative_path'].'/';
+                $item->setAttribute('src', $options['absolute_path'].'/'.$relative.$src);
             }
 
             // Save the document.
@@ -132,6 +140,10 @@ class DocumentParse
                     $item->setAttribute('src', $options['absolute_path'].'/'.substr($src, 3));
                     continue;
                 }
+
+                // Default URL rewrite behaviours.
+                $relative = empty($options['relative_path']) ? '' : $options['relative_path'].'/';
+                $item->setAttribute('src', $options['absolute_path'].'/'.$relative.$src);
             }
 
             // Save the document.
