@@ -6,6 +6,8 @@
 
 namespace Minisite\File;
 
+use \ZipArchive;
+
 /**
  * Class FileStatus
  * @package Minisite\File
