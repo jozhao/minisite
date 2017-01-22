@@ -7,7 +7,7 @@
     "mini site",
     "drupal"
   ],
-  "homepage": "http://xing.net.au",
+  "homepage": "https://github.com/jozhao/minisite",
   "license": "Apache-2.0",
   "authors": [
     {
@@ -21,10 +21,6 @@
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "require": {
-    "symfony/console": "^3.2",
-    "symfony/dom-crawler": "^3.2"
-  },
   "autoload": {
     "files": [
       "src/functions_include.php"

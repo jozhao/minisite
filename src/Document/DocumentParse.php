@@ -13,7 +13,6 @@ namespace Minisite\Document;
 class DocumentParse
 {
     private $_document;
-    private $_crawler;
     private $_options = [];
 
     /**
@@ -34,7 +33,6 @@ class DocumentParse
 
         if (!empty($options['base'] && !empty($options['base_href']))) {
             $document = $this->getDocument();
-            $crawler = $this->getCrawler();
             $head = $document->getElementsByTagName('head')->item(0);
             if (!empty($head)) {
                 // Update base href.
@@ -53,7 +51,6 @@ class DocumentParse
 
         if (!empty($options['absolute'] && !empty($options['absolute_path']))) {
             $document = $this->getDocument();
-            $crawler = $this->getCrawler();
 
             // Update link tag.
             foreach ($document->getElementsByTagName('a') as $item) {
@@ -165,22 +162,6 @@ class DocumentParse
     public function setDocument($document)
     {
         $this->_document = $document;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCrawler()
-    {
-        return $this->_crawler;
-    }
-
-    /**
-     * @param mixed $crawler
-     */
-    public function setCrawler($crawler)
-    {
-        $this->_crawler = $crawler;
     }
 
     /**

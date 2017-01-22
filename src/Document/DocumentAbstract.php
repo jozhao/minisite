@@ -6,7 +6,6 @@
 
 namespace Minisite\Document;
 
-use Symfony\Component\DomCrawler\Crawler;
 use Minisite\Exception\RuntimeException;
 use Minisite\Exception\InvalidArgumentException;
 
@@ -16,7 +15,6 @@ use Minisite\Exception\InvalidArgumentException;
  */
 abstract class DocumentAbstract implements DocumentInterface
 {
-    private $_crawler;
     private $_document;
 
     /**
@@ -32,10 +30,6 @@ abstract class DocumentAbstract implements DocumentInterface
             $document = new \DOMDocument();
             $document->loadHTMLFile($doc);
             self::setDocument($document);
-
-            $crawler = new Crawler();
-            $crawler->addDocument($document);
-            self::setCrawler($crawler);
         } else {
             throw new InvalidArgumentException('Invalid document');
         }
@@ -48,7 +42,6 @@ abstract class DocumentAbstract implements DocumentInterface
     {
         $parse = new DocumentParse($options);
         $parse->setDocument($this->getDocument());
-        $parse->setCrawler($this->getCrawler());
         $parse->parse();
         $document = $parse->getDocument();
         self::setDocument($document);
@@ -63,22 +56,6 @@ abstract class DocumentAbstract implements DocumentInterface
         $html = $this->getDocument()->saveHTML();
 
         return $html;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCrawler()
-    {
-        return $this->_crawler;
-    }
-
-    /**
-     * @param mixed $crawler
-     */
-    public function setCrawler($crawler)
-    {
-        $this->_crawler = $crawler;
     }
 
     /**
