@@ -92,9 +92,9 @@ abstract class FileAbstract implements FileInterface
         }
 
         if ($files) {
-            $this->getArchive()->extract($path, $files);
+            $this->getArchive()->extractTo($path, $files);
         } else {
-            $this->getArchive()->extract($path);
+            $this->getArchive()->extractTo($path);
         }
 
         return $this;
